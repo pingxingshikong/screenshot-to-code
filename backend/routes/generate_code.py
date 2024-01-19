@@ -92,7 +92,8 @@ async def stream_code(websocket: WebSocket):
         await websocket.send_json(
             {
                 "type": "error",
-                "value": "No OpenAI API key found. Please add your API key in the settings dialog or add it to backend/.env file. If you add it to .env, make sure to restart the backend server.",
+                # "value": "No OpenAI API key found. Please add your API key in the settings dialog or add it to backend/.env file. If you add it to .env, make sure to restart the backend server.",
+                "value": "找不到OpenAI API密钥,请在设置中添加API密钥",
             }
         )
         return
@@ -166,7 +167,8 @@ async def stream_code(websocket: WebSocket):
             await websocket.send_json(
                 {
                     "type": "error",
-                    "value": "Error assembling prompt. Contact support at support@picoapps.xyz",
+                    # "value": "Error assembling prompt. Contact support at support@picoapps.xyz",
+                    "value": "组装提示时出错,请联系管理员",
                 }
             )
             await websocket.close()
@@ -205,9 +207,11 @@ async def stream_code(websocket: WebSocket):
         except openai.AuthenticationError as e:
             print("[GENERATE_CODE] Authentication failed", e)
             error_message = (
-                "Incorrect OpenAI key. Please make sure your OpenAI API key is correct, or create a new OpenAI API key on your OpenAI dashboard."
+                # "Incorrect OpenAI key. Please make sure your OpenAI API key is correct, or create a new OpenAI API key on your OpenAI dashboard."
+                "OpenAI密钥不正确,请确保您的OpenAI API密钥正确，或在OpenAI仪表板上创建新的OpenAI API密钥。"
                 + (
-                    " Alternatively, you can purchase code generation credits directly on this website."
+                    # " Alternatively, you can purchase code generation credits directly on this website."
+                    " 或者，您可以直接在此网站上购买代码生成积分."
                     if IS_PROD
                     else ""
                 )
@@ -217,9 +221,12 @@ async def stream_code(websocket: WebSocket):
             print("[GENERATE_CODE] Model not found", e)
             error_message = (
                 e.message
-                + ". Please make sure you have followed the instructions correctly to obtain an OpenAI key with GPT vision access: https://github.com/abi/screenshot-to-code/blob/main/Troubleshooting.md"
+                # + ". Please make sure you have followed the instructions correctly to obtain an OpenAI key with GPT vision access: https://github.com/abi/screenshot-to-code/blob/main/Troubleshooting.md"
+                + ". 请确保您已正确按照说明获取具有GPT视觉访问权限的OpenAI密钥"
+
                 + (
-                    " Alternatively, you can purchase code generation credits directly on this website."
+                    # " Alternatively, you can purchase code generation credits directly on this website."
+                    "或者，您可以直接在此网站上购买代码生成积分."
                     if IS_PROD
                     else ""
                 )
@@ -228,9 +235,12 @@ async def stream_code(websocket: WebSocket):
         except openai.RateLimitError as e:
             print("[GENERATE_CODE] Rate limit exceeded", e)
             error_message = (
-                "OpenAI error - 'You exceeded your current quota, please check your plan and billing details.'"
-                + (
-                    " Alternatively, you can purchase code generation credits directly on this website."
+                # "OpenAI error - 'You exceeded your current quota, please check your plan and billing details.'"
+                "OpenAI error - '您超过了当前配额，请检查您的计划和账单详细信息.'"
+
+                    + (
+                    # " Alternatively, you can purchase code generation credits directly on this website."
+                    "或者，您可以直接在此网站上购买代码生成积分."
                     if IS_PROD
                     else ""
                 )
@@ -255,7 +265,7 @@ async def stream_code(websocket: WebSocket):
             updated_html = completion
         await websocket.send_json({"type": "setCode", "value": updated_html})
         await websocket.send_json(
-            {"type": "status", "value": "Code generation complete."}
+            {"type": "status", "value": "代码生成完成."}
         )
     except Exception as e:
         traceback.print_exc()
@@ -264,7 +274,7 @@ async def stream_code(websocket: WebSocket):
         # the frontend to update history
         await websocket.send_json({"type": "setCode", "value": completion})
         await websocket.send_json(
-            {"type": "status", "value": "Image generation failed but code is complete."}
+            {"type": "status", "value": "图像生成失败，但代码已完成."}
         )
 
     await websocket.close()
