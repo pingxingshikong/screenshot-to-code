@@ -47,7 +47,7 @@ function OutputSettingsSection({
           disabled={shouldDisableUpdates}
         >
           <SelectTrigger className="col-span-2" id="output-settings-js">
-            {stack ? generateDisplayComponent(stack) : "Select a stack"}
+            {stack ? generateDisplayComponent(stack) : "选择你的代码库类型"}
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>

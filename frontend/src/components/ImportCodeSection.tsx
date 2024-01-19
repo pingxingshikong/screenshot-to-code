@@ -38,13 +38,13 @@ function ImportCodeSection({ importFromCode }: Props) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="secondary">Import from Code</Button>
+        <Button variant="secondary">从代码中导入</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Paste in your HTML code</DialogTitle>
+          <DialogTitle>粘贴你的HTML代码</DialogTitle>
           <DialogDescription>
-            Make sure that the code you're importing is valid HTML.
+            请确保您要导入的代码是有效的HTML.
           </DialogDescription>
         </DialogHeader>
 
@@ -57,13 +57,13 @@ function ImportCodeSection({ importFromCode }: Props) {
         <OutputSettingsSection
           stack={stack}
           setStack={(config: Stack) => setStack(config)}
-          label="Stack:"
+          label="库类型:"
           shouldDisableUpdates={false}
         />
 
         <DialogFooter>
           <Button type="submit" onClick={doImport}>
-            Import
+            导入
           </Button>
         </DialogFooter>
       </DialogContent>

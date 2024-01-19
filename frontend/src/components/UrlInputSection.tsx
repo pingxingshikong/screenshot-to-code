@@ -24,7 +24,9 @@ export function UrlInputSection({ doCreate, screenshotOneApiKey }: Props) {
     }
 
     if (!referenceUrl) {
-      toast.error("Please enter a URL");
+      // toast.error("Please enter a URL");
+      toast.error("请输入一个url地址");
+
       return;
     }
 
