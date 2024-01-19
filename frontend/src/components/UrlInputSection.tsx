@@ -16,7 +16,8 @@ export function UrlInputSection({ doCreate, screenshotOneApiKey }: Props) {
   async function takeScreenshot() {
     if (!screenshotOneApiKey) {
       toast.error(
-        "Please add a ScreenshotOne API key in the Settings dialog. This is optional - you can also drag/drop and upload images directly.",
+        // "Please add a ScreenshotOne API key in the Settings dialog. This is optional - you can also drag/drop and upload images directly.",
+          "请在“设置”中添加ScreenshotOne API屏幕截图配置。这是可选的-您也可以直接拖放和上传图像。",
         { duration: 8000 }
       );
       return;
@@ -42,7 +43,8 @@ export function UrlInputSection({ doCreate, screenshotOneApiKey }: Props) {
         });
 
         if (!response.ok) {
-          throw new Error("Failed to capture screenshot");
+          // throw new Error("Failed to capture screenshot");
+          throw new Error("捕获屏幕截图失败");
         }
 
         const res = await response.json();
@@ -50,7 +52,9 @@ export function UrlInputSection({ doCreate, screenshotOneApiKey }: Props) {
       } catch (error) {
         console.error(error);
         toast.error(
-          "Failed to capture screenshot. Look at the console and your backend logs for more details."
+          // "Failed to capture screenshot. Look at the console and your backend logs for more details."
+            "未能捕获屏幕截图。查看控制台和后端日志以了解更多详细信息。"
+
         );
       } finally {
         setIsLoading(false);

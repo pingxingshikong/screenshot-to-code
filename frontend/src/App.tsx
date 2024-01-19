@@ -177,7 +177,8 @@ function App() {
             // Validate parent version
             if (parentVersion === null) {
               toast.error(
-                "No parent version set. Contact support or open a Github issue."
+                // "No parent version set. Contact support or open a Github issue."
+                  "No parent version set. 请联系管理员."
               );
               return prev;
             }
@@ -232,7 +233,8 @@ function App() {
   async function doUpdate() {
     if (currentVersion === null) {
       toast.error(
-        "No current version set. Contact support or open a Github issue."
+        // "No current version set. Contact support or open a Github issue."
+          "No current version set. 请联系管理员"
       );
       return;
     }
@@ -242,7 +244,8 @@ function App() {
       historyTree = extractHistoryTree(appHistory, currentVersion);
     } catch {
       toast.error(
-        "Version history is invalid. This shouldn't happen. Please contact support or open a Github issue."
+        // "Version history is invalid. This shouldn't happen. Please contact support or open a Github issue."
+          "版本历史记录无效,请联系管理员"
       );
       return;
     }
@@ -341,8 +344,7 @@ function App() {
 
           {IS_OPENAI_DOWN && (
             <div className="bg-black text-white dark:bg-white dark:text-black p-3 rounded">
-              OpenAI API is currently down. Try back in 30 minutes or later. We
-              apologize for the inconvenience.
+              OpenAI API当前关闭。请在30分钟后或稍后重试。我们对给您带来的不便深表歉意。
             </div>
           )}
 
@@ -361,7 +363,7 @@ function App() {
                       onClick={cancelCodeGeneration}
                       className="w-full dark:text-white dark:bg-gray-700"
                     >
-                      Cancel
+                      取消
                     </Button>
                   </div>
                   <CodePreview code={generatedCode} />
@@ -378,7 +380,7 @@ function App() {
                     />
                     <div className="flex justify-between items-center gap-x-2">
                       <div className="font-500 text-xs text-slate-700 dark:text-white">
-                        Include screenshot of current version?
+                        是否包括当前版本的屏幕截图数据?
                       </div>
                       <Switch
                         checked={shouldIncludeResultImage}
@@ -390,7 +392,7 @@ function App() {
                       onClick={doUpdate}
                       className="dark:text-white dark:bg-gray-700"
                     >
-                      Update
+                      更新并生成
                     </Button>
                   </div>
                   <div className="flex items-center gap-x-2 mt-2">
@@ -398,14 +400,14 @@ function App() {
                       onClick={downloadCode}
                       className="flex items-center gap-x-2 dark:text-white dark:bg-gray-700"
                     >
-                      <FaDownload /> Download
+                      <FaDownload /> 下载代码
                     </Button>
                     <Button
                       onClick={reset}
                       className="flex items-center gap-x-2 dark:text-white dark:bg-gray-700"
                     >
                       <FaUndo />
-                      Reset
+                      重置
                     </Button>
                   </div>
                 </div>
@@ -427,7 +429,7 @@ function App() {
                       />
                     </div>
                     <div className="text-gray-400 uppercase text-sm text-center mt-1">
-                      Original Screenshot
+                      原始屏幕截图
                     </div>
                   </div>
                 )}

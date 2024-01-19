@@ -4,10 +4,10 @@ import { USER_CLOSE_WEB_SOCKET_CODE } from "./constants";
 import { FullGenerationSettings } from "./types";
 
 const ERROR_MESSAGE =
-  "Error generating code. Check the Developer Console AND the backend logs for details. Feel free to open a Github issue.";
-
-const CANCEL_MESSAGE = "Code generation cancelled";
-
+  // "Error generating code. Check the Developer Console AND the backend logs for details. Feel free to open a Github issue.";
+  "生成代码时出错。有关详细信息，请查看开发人员控制台和后端日志";
+// const CANCEL_MESSAGE = "Code generation cancelled";
+const CANCEL_MESSAGE = "代码生成已取消";
 export function generateCode(
   wsRef: React.MutableRefObject<WebSocket | null>,
   params: FullGenerationSettings,

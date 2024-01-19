@@ -44,7 +44,7 @@ function SettingsDialog({ settings, setSettings }: Props) {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="mb-4">Settings</DialogTitle>
+          <DialogTitle className="mb-4">设置</DialogTitle>
         </DialogHeader>
 
         {/* Access code */}
@@ -54,9 +54,9 @@ function SettingsDialog({ settings, setSettings }: Props) {
 
         <div className="flex items-center space-x-2">
           <Label htmlFor="image-generation">
-            <div>DALL-E Placeholder Image Generation</div>
+            <div>DALL-E 占位符图像生成</div>
             <div className="font-light mt-2">
-              More fun with it but if you want to save money, turn it off.
+              它更有趣，但如果你想省钱，就把它关掉.
             </div>
           </Label>
           <Switch
@@ -74,8 +74,7 @@ function SettingsDialog({ settings, setSettings }: Props) {
           <Label htmlFor="openai-api-key">
             <div>OpenAI API key</div>
             <div className="font-light mt-2 leading-relaxed">
-              Only stored in your browser. Never stored on servers. Overrides
-              your .env config.
+              仅存储在您的浏览器中。从不存储在服务器上。
             </div>
           </Label>
 
@@ -96,7 +95,7 @@ function SettingsDialog({ settings, setSettings }: Props) {
               <Label htmlFor="openai-api-key">
                 <div>OpenAI Base URL (optional)</div>
                 <div className="font-light mt-2 leading-relaxed">
-                  Replace with a proxy URL if you don't want to use the default.
+                  如果不想使用默认URL,请替换为代理URL.
                 </div>
               </Label>
 
@@ -116,18 +115,17 @@ function SettingsDialog({ settings, setSettings }: Props) {
 
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger>Screenshot by URL Config</AccordionTrigger>
+              <AccordionTrigger>根据URL屏幕截图配置</AccordionTrigger>
               <AccordionContent>
                 <Label htmlFor="screenshot-one-api-key">
                   <div className="leading-normal font-normal text-xs">
-                    If you want to use URLs directly instead of taking the
-                    screenshot yourself, add a ScreenshotOne API key.{" "}
+                    如果您想直接使用URL而不是自己截图，请添加ScreenshotOne API密钥.{" "}
                     <a
                       href="https://screenshotone.com?via=screenshot-to-code"
                       className="underline"
                       target="_blank"
                     >
-                      Get 100 screenshots/mo for free.
+                      免费获得100张screenshots屏幕截图/mo.
                     </a>
                   </div>
                 </Label>
@@ -150,11 +148,11 @@ function SettingsDialog({ settings, setSettings }: Props) {
 
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger>Theme Settings</AccordionTrigger>
+              <AccordionTrigger>主题设置</AccordionTrigger>
               <AccordionContent className="space-y-4 flex flex-col">
                 <div className="flex items-center justify-between">
                   <Label htmlFor="app-theme">
-                    <div>App Theme</div>
+                    <div>应用主题</div>
                   </Label>
                   <div>
                     <button
@@ -169,14 +167,14 @@ function SettingsDialog({ settings, setSettings }: Props) {
                           ?.classList.toggle("dark"); // enable dark mode for upload container
                       }}
                     >
-                      Toggle dark mode
+                      切换黑暗模式
                     </button>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
                   <Label htmlFor="editor-theme">
                     <div>
-                      Code Editor Theme - requires page refresh to update
+                      代码编辑器主题-需要刷新页面才能更新
                     </div>
                   </Label>
                   <div>
